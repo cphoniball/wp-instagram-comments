@@ -1,11 +1,4 @@
-#Project starter template
+#WP Instagram Comments
 
-Just a very, very simple boilerplate for starting projects. It's already set up with most of the dependencies I use in all my projects, including basic customizations for Git, Bower, and Grunt.
+A plugin to allow instagram users to pull comments from an Instagram post to display alongside their WordPress comments.
 
-To use, do the following:
-
-```bash
-$ git clone git@github.com:cphoniball/project-starter.git
-$ bower install
-$ npm install
-```
