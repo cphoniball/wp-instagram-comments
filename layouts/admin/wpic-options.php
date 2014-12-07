@@ -1,5 +1,7 @@
 <?php
 $auth = new WPIC_Authentication();
+
+$access_token = $auth->get_access_token();
 ?>
 
 <div class="wrap">
@@ -14,6 +16,12 @@ $auth = new WPIC_Authentication();
 		button below to authorize your account.
 		<br>
 		<a class="btn btn-primary" href="<?php echo $auth->get_auth_endpoint(); ?>">Authorize your account</a>
+
+		<?php if ( $access_token ) : ?>
+			<div class="access-token">You are authenticated with the Instagram API, with access token <span><?php echo $access_token; ?></span></div>
+		<?php endif; ?>
 	</div>
+
+
 
 </div>
