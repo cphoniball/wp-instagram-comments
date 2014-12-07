@@ -54,4 +54,7 @@ if ( ! class_exists( 'WP_Instagram_Comments') ) {
 
 if ( class_exists( 'WP_Instagram_Comments' ) ) {
 	$WP_Instagram_Comments = new WP_Instagram_Comments();
+
+	require_once( __DIR__ . '/wpic_core.php' );
+	require_once( __DIR__ . '/classes/wpic_authentication.php' );
 }
