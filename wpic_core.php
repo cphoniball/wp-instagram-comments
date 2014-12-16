@@ -43,7 +43,7 @@ if ( ! class_exists( 'WPIC_Core') ) {
 		 * @param string $var Name of variable to get
 		 * @return false if variable does not exist, mixed otherwise
 		 */
-		public function get_post_var( $var ) {
+		public function post_var( $var ) {
 			if ( isset ( $_POST[ $var ] ) ) { return $this->sanitize( $var, $_POST[ $var ] ); }
 			return false;
 		}
@@ -109,11 +109,9 @@ if ( ! class_exists( 'WPIC_Core') ) {
 			require_once( __DIR__ . '/layouts' . $path );
 		}
 
-
 		/*
 		 * Administration page registration
 		 */
-
 		public function register_admin_settings_page() {
 			add_options_page(
 				'WP Instagram Comments',

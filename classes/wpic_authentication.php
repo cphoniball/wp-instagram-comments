@@ -98,7 +98,6 @@ if ( ! class_exists( 'WPIC_Authentication') ) {
 			$username = $body['user']['username'];
 			$user_id = $body['user']['id'];
 
-
 			update_option( 'wpic_access_token', $access_token );
 			update_option( 'wpic_username', $username );
 			update_option( 'wpic_user_id', $user_id );
