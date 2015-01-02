@@ -8,7 +8,7 @@
  */
 if ( ! class_exists( 'WPIC_Authentication') ) {
 
-	class WPIC_Authentication extends WPIC_Core {
+	class WPIC_Authentication {
 
 		protected $client_id;
 		protected $client_secret;
@@ -25,11 +25,11 @@ if ( ! class_exists( 'WPIC_Authentication') ) {
 			add_action( 'init', array( $this, 'receive_auth_request_redirect' ) );
 		}
 
-		protected function get_auth_endpoint() {
+		public function get_auth_endpoint() {
 			return $this->auth_endpoint;
 		}
 
-		protected function get_access_token() {
+		public function get_access_token() {
 			return get_option( 'wpic_access_token' );
 		}
 
@@ -47,18 +47,18 @@ if ( ! class_exists( 'WPIC_Authentication') ) {
 		 * @return void
 		 */
 		public function receive_auth_request_redirect() {
-			$page = $this->get_var( 'page' );
+			$page = WPIC_Helpers::get_var( 'page' );
 
 			if ( $page !== 'wpic-options' ) {
 				return;
 			}
 
-			$error = $this->get_var( 'error' );
-			$code = $this->get_var( 'code' );
+			$error = WPIC_Helpers::get_var( 'error' );
+			$code = WPIC_Helpers::get_var( 'code' );
 
 			if ( $error || ! $code ) {
-				$reason = $this->get_var( 'error_reason' );
-				$description = $this->get_var( 'error_description' );
+				$reason = WPIC_Helpers::get_var( 'error_reason' );
+				$description = WPIC_Helpers::get_var( 'error_description' );
 
 				// handle error here... need to redirect to page and show error, explain why the app won't work
 				return;

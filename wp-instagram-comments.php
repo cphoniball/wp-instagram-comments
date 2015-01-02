@@ -12,6 +12,8 @@ if ( ! class_exists( 'WP_Instagram_Comments') ) {
 
 	class WP_Instagram_Comments {
 
+		const WPIC_META_KEY = 'wp_instagram_comments';
+
 		public function __construct() {
 			// Client enqueues
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_client_styles' ) );
@@ -55,8 +57,7 @@ if ( class_exists( 'WP_Instagram_Comments' ) ) {
 	require_once( __DIR__ . '/vendor/shuber/curl/curl.php' );
 
 	require_once( __DIR__ . '/classes/wpic_helpers.php' );
-
-	require_once( __DIR__ . '/wpic_core.php' );
 	require_once( __DIR__ . '/classes/wpic_authentication.php' );
 	require_once( __DIR__ . '/classes/wpic_admin.php' );
+	require_once( __DIR__ . '/classes/wpic_comments.php' );
 }

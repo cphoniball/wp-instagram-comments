@@ -40,6 +40,43 @@ if ( ! class_exists( 'WPIC_Helpers' ) ) {
 		}
 
 		/**
+		 * Get a layout
+		 *
+		 * Wrapper function for WPIC_Helpers::echo_layout that returns the file content as a string using output buffering
+		 *
+		 * @since 0.0.1
+		 *
+		 * @see WPIC_Helpers::echo_layout
+		 *
+		 * @param string $path Path to layout file, relative to layouts folder
+		 * @return string File contents
+		 */
+		public static function get_layout( $path ) {
+			ob_start();
+
+			self::echo_layout( $path );
+
+			$contents = ob_get_contents();
+			ob_end_clean();
+
+			return $contents;
+		}
+
+		/**
+		 * Echoes a layout
+		 *
+		 * Echoes a layout from the plugins layout folder, uses require to maintain PHP functionality embedded in layouts
+		 *
+		 * @since 0.0.1
+		 *
+		 * @param string $path Path to layout file, relative to layouts folder
+		 * @return void
+		 */
+		public static function echo_layout( $path ) {
+			require_once( __DIR__ . '/../layouts' . $path );
+		}
+
+		/**
 		 * Sanitize user input
 		 *
 		 * Uses standard WordPress functions to sanitize user input. Handles arrays and will use email sanitization if the
