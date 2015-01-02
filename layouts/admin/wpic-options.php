@@ -22,6 +22,21 @@ $access_token = $auth->get_access_token();
 		<?php endif; ?>
 	</div>
 
+	<pre>
+	<?php
+	$user = WPIC_Requests::get_user();
+
+
+	print_r( $user );
+
+	$media_item = WPIC_Requests::get_media_by_url( 'http://instagram.com/p/xUrYezibnU/' );
+	//print_r( $media_item )
+
+	$comments = WPIC_Requests::get_media_comments( '888525824843168212_180655621' );
+	print_r( $comments );
+	?>
+	</pre>
+
 
 
 </div>

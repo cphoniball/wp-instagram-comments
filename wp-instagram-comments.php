@@ -58,6 +58,7 @@ if ( class_exists( 'WP_Instagram_Comments' ) ) {
 
 	require_once( __DIR__ . '/classes/wpic_helpers.php' );
 	require_once( __DIR__ . '/classes/wpic_authentication.php' );
+	require_once( __DIR__ . '/classes/wpic_requests.php' );
 	require_once( __DIR__ . '/classes/wpic_admin.php' );
 	require_once( __DIR__ . '/classes/wpic_comments.php' );
 }

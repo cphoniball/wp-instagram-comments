@@ -12,7 +12,7 @@ if ( ! class_exists( 'WPIC_Admin') ) {
 	class WPIC_Admin extends WP_Instagram_Comments {
 
 		public function __construct() {
-			add_action( 'admin_menu', array( $this, 'register_admin_settings_page' ) );
+
 		}
 
 		/*
@@ -101,6 +101,7 @@ if ( ! class_exists( 'WPIC_Admin') ) {
 if ( class_exists( 'WPIC_Admin' ) ) {
 	$WPIC_Admin = new WPIC_Admin();
 
+	add_action( 'admin_menu', array( $WPIC_Admin, 'register_admin_settings_page' ) );
 	add_action( 'add_meta_boxes', array( $WPIC_Admin, 'add_wpic_meta_box' ) );
 	add_action( 'save_post', array( $WPIC_Admin, 'save_wpic_meta' ) );
 }

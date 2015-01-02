@@ -48,7 +48,6 @@ if ( ! class_exists( 'WPIC_Comments') ) {
 		 * @since 0.0.1
 		 *
 		 * @param string $url Full URL to the Instagram post to retrieve comments for
-		 * @param type $var Optional. Description.
 		 * @return type Description.
 		 */
 		public static function get_instagram_comments( $url ) {
@@ -60,8 +59,5 @@ if ( ! class_exists( 'WPIC_Comments') ) {
 } // end if
 
 if ( class_exists( 'WPIC_Comments' ) ) {
-	$WPIC_Comments = new WPIC_Admin();
-
-	add_action( 'add_meta_boxes', array( $WPIC_Admin, 'add_wpic_meta_box' ) );
-	add_action( 'save_post', array( $WPIC_Admin, 'save_wpic_meta' ) );
+	$WPIC_Comments = new WPIC_Comments();
 }

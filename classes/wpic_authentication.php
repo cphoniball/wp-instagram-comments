@@ -8,7 +8,7 @@
  */
 if ( ! class_exists( 'WPIC_Authentication') ) {
 
-	class WPIC_Authentication {
+	class WPIC_Authentication extends WP_Instagram_Comments {
 
 		protected $client_id;
 		protected $client_secret;
@@ -19,7 +19,7 @@ if ( ! class_exists( 'WPIC_Authentication') ) {
 			$this->client_id = 'a1d83a073f2f469aaf4f4d149728fda6';
 			$this->client_secret = '4df6ea4c0f1844e58e179e2e0ae25db2';
 			$this->redirect_uri = 'http://tori.dev/wp-admin/options-general.php?page=wpic-options';
-			$this->auth_endpoint = 'https://api.instagram.com/oauth/authorize/?client_id=' . $this->client_id . '&redirect_uri=' . $this->redirect_uri . '&response_type=code';
+			$this->auth_endpoint = 'https://api.instagram.com/oauth/authorize/?client_id=' . $this->client_id . '&scope=comments&redirect_uri=' . $this->redirect_uri . '&response_type=code';
 			$this->access_token_endpoint = 'https://api.instagram.com/oauth/access_token';
 
 			add_action( 'init', array( $this, 'receive_auth_request_redirect' ) );
@@ -31,6 +31,10 @@ if ( ! class_exists( 'WPIC_Authentication') ) {
 
 		public function get_access_token() {
 			return get_option( 'wpic_access_token' );
+		}
+
+		public static function get_user_id() {
+			return get_option( 'wpic_user_id' );
 		}
 
 		/**
@@ -102,8 +106,6 @@ if ( ! class_exists( 'WPIC_Authentication') ) {
 			update_option( 'wpic_username', $username );
 			update_option( 'wpic_user_id', $user_id );
 		}
-
-
 
 	} // END class WPIC_Authentication
 
