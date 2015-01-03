@@ -1,6 +1,7 @@
 <?php
 
 if ( ! class_exists( 'WPIC_Helpers' ) ) { require_once( __DIR__ . '/wpic-helpers.php' ); }
+if ( ! class_exists( 'WPIC_Requests' ) ) { require_once( __DIR__ . '/wpic-requests.php' ); }
 
 /**
  * Retrieves and outputs WPIC Comments
@@ -35,11 +36,36 @@ if ( ! class_exists( 'WPIC_Comments') ) {
 
 			$comments = self::get_instagram_comments( $instagram_post );
 
-			$comment_layout = WPIC_Helpers::get_layout( '/wpic-comments.php' );
+			if ( ! $comments ) {
+				return $content;
+			}
 
-			$content .= $comment_layout;
+			$markup = '<div class="wpic-comments">';
+
+			foreach ( $comments as $comment ) {
+				$markup .= $this->markup_instagram_comment( $comment );
+			}
+
+			$markup .= '</div>';
+
+			$content .= $markup;
 
 			return $content;
+		}
+
+		/**
+		 * Echoes instagram comment into HTML markup
+		 *
+		 * @since 0.1.0
+		 *
+		 * @param array $comment Array representing instagram comment
+		 * @return void
+		 */
+		public function markup_instagram_comment( $comment ) {
+			$markup = '<span class="wpic-comment">';
+			$markup .= $comment['text'];
+			$markup .= '</span>';
+			return $markup;
 		}
 
 		/**
@@ -51,7 +77,11 @@ if ( ! class_exists( 'WPIC_Comments') ) {
 		 * @return type Description.
 		 */
 		public static function get_instagram_comments( $url ) {
+			$media = WPIC_Requests::get_media_by_url( $url );
+			$id = $media['data']['id'];
+			$comments = WPIC_Requests::get_media_comments( $id );
 
+			return $comments['data'];
 		}
 
 	} // END class WPIC_Comments
