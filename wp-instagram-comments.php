@@ -16,8 +16,8 @@ if ( ! class_exists( 'WP_Instagram_Comments') ) {
 
 		public function __construct() {
 			// Client enqueues
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_client_styles' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_client_scripts' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_client_styles' ) );
 
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_client_styles' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_client_scripts' ) );

@@ -3,16 +3,17 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		watch: {
-			scripts: {
-
-			},
 			styles: {
-
+				files: ['sass/wpic.sass'],
+				tasks: 'sass'
 			}
 		},
 		sass: {
-			prod: {
-						}
+			dev: {
+				files: {
+					'css/wpic.css': 'sass/wpic.sass'
+				}
+			}
 		},
 		jshint: {
 
@@ -39,5 +40,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-	grunt.registerTask('default', ['']);
+	grunt.registerTask('default', ['watch']);
 };
