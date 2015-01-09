@@ -32,7 +32,7 @@ if ( ! class_exists( 'WP_Instagram_Comments') ) {
 		}
 
 		public function enqueue_client_styles() {
-
+			wp_enqueue_style( 'wpic', plugins_url( '/css/wpic.css', __FILE__ ), array(), false );
 		}
 
 		public function enqueue_client_scripts() {
